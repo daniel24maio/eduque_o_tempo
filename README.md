@@ -1,2 +1,2 @@
-# eduque_o_tempo
+# Eduque o Tempo
 Projeto para disciplina de desenvolvimento Web
