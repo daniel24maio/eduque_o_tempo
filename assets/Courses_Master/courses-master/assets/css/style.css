@@ -134,7 +134,12 @@ body {
     font-size: 16px
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Josefin Sans", sans-serif;
     color: #ffffff;
     margin-top: 0px;
@@ -188,14 +193,16 @@ p {
     clear: both
 }
 
-a, .button {
+a,
+.button {
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -o-transition: .3s;
     transition: .3s
 }
 
-a:focus, .button:focus {
+a:focus,
+.button:focus {
     text-decoration: none;
     outline: none
 }
@@ -208,16 +215,24 @@ a:hover {
     color: #fff
 }
 
-a:focus, a:hover, .portfolio-cat a:hover, .footer -menu li a:hover {
+a:focus,
+a:hover,
+.portfolio-cat a:hover,
+.footer -menu li a:hover {
     text-decoration: none
 }
 
-a, button {
+a,
+button {
     color: #fff;
     outline: medium none
 }
 
-button:focus, input:focus, input:focus, textarea, textarea:focus {
+button:focus,
+input:focus,
+input:focus,
+textarea,
+textarea:focus {
     outline: 0
 }
 
@@ -236,7 +251,12 @@ input:focus::-moz-placeholder {
     text-transform: capitalize
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
     color: inherit
 }
 
@@ -440,7 +460,8 @@ hr {
     }
 }
 
-.btn.focus, .btn:focus {
+.btn.focus,
+.btn:focus {
     outline: 0;
     box-shadow: none
 }
@@ -614,7 +635,8 @@ hr {
     color: #888
 }
 
-#scrollUp, #back-top {
+#scrollUp,
+#back-top {
     background: #FF4B00;
     height: 50px;
     width: 50px;
@@ -631,12 +653,15 @@ hr {
 }
 
 @media (max-width: 575px) {
-    #scrollUp, #back-top {
+
+    #scrollUp,
+    #back-top {
         right: 16px
     }
 }
 
-#scrollUp a i, #back-top a i {
+#scrollUp a i,
+#back-top a i {
     display: block;
     line-height: 50px
 }
@@ -3048,22 +3073,26 @@ hr {
     }
 }
 
-.slider-area, .slider-area2 {
+.slider-area,
+.slider-area2 {
     background-image: url(../img/hero/h1_hero.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center
 }
 
-.slider-area.slider-area2, .slider-area2.slider-area2 {
+.slider-area.slider-area2,
+.slider-area2.slider-area2 {
     background-image: url(../img/hero/hero2.png)
 }
 
-.slider-area .hero__caption, .slider-area2 .hero__caption {
+.slider-area .hero__caption,
+.slider-area2 .hero__caption {
     overflow: hidden
 }
 
-.slider-area .hero__caption span, .slider-area2 .hero__caption span {
+.slider-area .hero__caption span,
+.slider-area2 .hero__caption span {
     color: #31ff7a;
     font-size: 60px;
     line-height: 1.2;
@@ -3073,13 +3102,16 @@ hr {
 }
 
 @media (max-width: 575px) {
-    .slider-area .hero__caption span, .slider-area2 .hero__caption span {
+
+    .slider-area .hero__caption span,
+    .slider-area2 .hero__caption span {
         margin-bottom: 30px;
         font-size: 56px
     }
 }
 
-.slider-area .hero__caption h1, .slider-area2 .hero__caption h1 {
+.slider-area .hero__caption h1,
+.slider-area2 .hero__caption h1 {
     font-size: 60px;
     font-weight: 700;
     color: #fff;
@@ -3088,21 +3120,27 @@ hr {
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .slider-area .hero__caption h1, .slider-area2 .hero__caption h1 {
+
+    .slider-area .hero__caption h1,
+    .slider-area2 .hero__caption h1 {
         font-size: 60px;
         line-height: 1.2
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .slider-area .hero__caption h1, .slider-area2 .hero__caption h1 {
+
+    .slider-area .hero__caption h1,
+    .slider-area2 .hero__caption h1 {
         font-size: 50px;
         line-height: 1.2
     }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-    .slider-area .hero__caption h1, .slider-area2 .hero__caption h1 {
+
+    .slider-area .hero__caption h1,
+    .slider-area2 .hero__caption h1 {
         font-size: 38px;
         line-height: 1.2;
         margin-bottom: 20px
@@ -3110,38 +3148,48 @@ hr {
 }
 
 @media (max-width: 575px) {
-    .slider-area .hero__caption h1, .slider-area2 .hero__caption h1 {
+
+    .slider-area .hero__caption h1,
+    .slider-area2 .hero__caption h1 {
         font-size: 28px;
         line-height: 1.2;
         margin-bottom: 20px
     }
 }
 
-.slider-area .hero__caption p, .slider-area2 .hero__caption p {
+.slider-area .hero__caption p,
+.slider-area2 .hero__caption p {
     color: #fff;
     font-size: 18px;
     margin-bottom: 34px
 }
 
 @media (max-width: 575px) {
-    .slider-area .hero__caption p, .slider-area2 .hero__caption p {
+
+    .slider-area .hero__caption p,
+    .slider-area2 .hero__caption p {
         font-size: 16px;
         padding: 0 0px
     }
 }
 
-.slider-area .hero__caption.hero__caption2, .slider-area2 .hero__caption.hero__caption2 {
+.slider-area .hero__caption.hero__caption2,
+.slider-area2 .hero__caption.hero__caption2 {
     padding-top: 218px
 }
 
 @media (max-width: 575px) {
-    .slider-area .hero__caption.hero__caption2, .slider-area2 .hero__caption.hero__caption2 {
+
+    .slider-area .hero__caption.hero__caption2,
+    .slider-area2 .hero__caption.hero__caption2 {
         padding-top: 184px
     }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-    .slider-area .hero__caption.hero__caption2, .slider-area2 .hero__caption.hero__caption2 {
+
+    .slider-area .hero__caption.hero__caption2,
+    .slider-area2 .hero__caption.hero__caption2 {
         padding-top: 184px
     }
 }
@@ -4801,7 +4849,8 @@ hr {
     transition: .4s
 }
 
-.blog_area a:hover, .blog_area a :hover {
+.blog_area a:hover,
+.blog_area a :hover {
     background: -webkit-linear-gradient(131deg, #C86FFF 0%, #C86FFF 99%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -5268,7 +5317,8 @@ hr {
     color: #999999
 }
 
-.blog-info-link li i, .blog-info-link li span {
+.blog-info-link li i,
+.blog-info-link li span {
     font-size: 13px;
     margin-right: 5px
 }
@@ -5426,7 +5476,8 @@ hr {
     border-left: 0
 }
 
-.blog_right_sidebar .newsletter_widget .input-group button i, .blog_right_sidebar .newsletter_widget .input-group button span {
+.blog_right_sidebar .newsletter_widget .input-group button i,
+.blog_right_sidebar .newsletter_widget .input-group button span {
     font-size: 14px;
     color: #fff
 }
@@ -5548,7 +5599,8 @@ hr {
     margin-right: 10px
 }
 
-.blog-pagination .page-link i, .blog-pagination .page-link span {
+.blog-pagination .page-link i,
+.blog-pagination .page-link span {
     font-size: 13px
 }
 
@@ -5646,7 +5698,8 @@ hr {
     font-size: 14px
 }
 
-.single-post-area .navigation-top .like-info i, .single-post-area .navigation-top .like-info span {
+.single-post-area .navigation-top .like-info i,
+.single-post-area .navigation-top .like-info span {
     font-size: 16px;
     margin-right: 5px
 }
@@ -5655,7 +5708,8 @@ hr {
     font-size: 14px
 }
 
-.single-post-area .navigation-top .comment-count i, .single-post-area .navigation-top .comment-count span {
+.single-post-area .navigation-top .comment-count i,
+.single-post-area .navigation-top .comment-count span {
     font-size: 16px;
     margin-right: 5px
 }
@@ -5669,7 +5723,8 @@ hr {
     margin: 0
 }
 
-.single-post-area .navigation-top .social-icons li i, .single-post-area .navigation-top .social-icons li span {
+.single-post-area .navigation-top .social-icons li i,
+.single-post-area .navigation-top .social-icons li span {
     font-size: 14px;
     color: #999999
 }
@@ -5994,7 +6049,8 @@ hr {
     margin-right: 20px
 }
 
-.contact-info__icon i, .contact-info__icon span {
+.contact-info__icon i,
+.contact-info__icon span {
     color: #8f9195;
     font-size: 27px
 }
@@ -6159,7 +6215,8 @@ hr {
     justify-content: start
 }
 
-.theme-colors, .header-sticky.sticky-bar {
+.theme-colors,
+.header-sticky.sticky-bar {
     background: #00b4ff;
     background: -moz-linear-gradient(top, #00b4ff 0%, #08aeea 100%);
     background: -webkit-linear-gradient(top, #00b4ff 0%, #08aeea 100%);
@@ -6185,11 +6242,20 @@ hr {
     font-size: 24px
 }
 
-b, sup, sub, u, del {
+b,
+sup,
+sub,
+u,
+del {
     color: #1f2b7b
 }
 
-.typography h1, .typography h2, .typography h3, .typography h4, .typography h5, .typography h6 {
+.typography h1,
+.typography h2,
+.typography h3,
+.typography h4,
+.typography h5,
+.typography h6 {
     color: #828bb2
 }
 
@@ -6482,7 +6548,10 @@ b, sup, sub, u, del {
     display: flex
 }
 
-.progress-table .table-head .serial, .progress-table .table-head .country, .progress-table .table-head .visit, .progress-table .table-head .percentage {
+.progress-table .table-head .serial,
+.progress-table .table-head .country,
+.progress-table .table-head .visit,
+.progress-table .table-head .percentage {
     color: #415094;
     line-height: 40px;
     text-transform: uppercase;
@@ -6495,7 +6564,10 @@ b, sup, sub, u, del {
     display: flex
 }
 
-.progress-table .table-row .serial, .progress-table .table-row .country, .progress-table .table-row .visit, .progress-table .table-row .percentage {
+.progress-table .table-row .serial,
+.progress-table .table-row .country,
+.progress-table .table-row .visit,
+.progress-table .table-row .percentage {
     display: flex;
     align-items: center
 }
@@ -7267,4 +7339,22 @@ b, sup, sub, u, del {
 
 .switch-wrap {
     margin-bottom: 10px
+}
+
+@media (max-width: 991px) {
+    .hero__caption p {
+        font-weight: 700;
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-area {
+        background-image: none;
+        background-color: #00b2fb
+    }
+
+    .hero__caption p {
+        width: 100%;
+    }
 }
