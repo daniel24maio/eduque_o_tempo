@@ -9943,6 +9943,7 @@ pre code {
 .row {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin-right: -0.75rem;
   margin-left: -0.75rem;
 }
@@ -30786,7 +30787,10 @@ div.tagsinput span.tag a {
 }
 
 .content-wrapper {
-  background: #364766;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: #151f31;
   padding: 1.875rem 1.75rem;
   width: 100%;
   -webkit-flex-grow: 1;
