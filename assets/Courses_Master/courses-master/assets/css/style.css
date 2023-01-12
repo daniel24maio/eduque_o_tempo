@@ -7358,3 +7358,20 @@ del {
         width: 100%;
     }
 }
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #00b2fb;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #0075a3;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #FF4B00;
+  }

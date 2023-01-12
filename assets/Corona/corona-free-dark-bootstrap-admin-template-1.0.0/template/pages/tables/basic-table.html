@@ -24,7 +24,7 @@
   <div class="container-scroller">
     <!-- partial:../../partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-      
+
       <ul class="nav">
         <li class="nav-item profile">
           <div class="profile-desc">
@@ -199,11 +199,7 @@
             </li>
           </ul>
           <ul class="navbar-nav navbar-nav-right">
-
-            <li class="nav-item nav-settings d-none d-lg-block">
-
-            </li>
-            <li class="nav-item dropdown border-left">
+            <!-- <li class="nav-item dropdown border-left">
               <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown"
                 aria-expanded="false">
                 <i class="mdi mdi-email"></i>
@@ -294,15 +290,9 @@
                 <div class="dropdown-divider"></div>
                 <p class="p-3 mb-0 text-center">See all notifications</p>
               </div>
-            </li>
+            </li> -->
             <li class="nav-item dropdown">
-              <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
-                <div class="navbar-profile">
-                  <img class="img-xs rounded-circle" src="../../assets/images/faces-clipart/pic-1.png" alt="">
-                  <p class="mb-0 d-none d-sm-block navbar-profile-name">Fizika Frederitch</p>
-                  <i class="mdi mdi-menu-down d-none d-sm-block"></i>
-                </div>
-              </a>
+              <img src="../../../../../../assets/Courses_Master/courses-master/assets/img/logo/logo.png" alt="">
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                 aria-labelledby="profileDropdown">
                 <h6 class="p-3 mb-0">Profile</h6>
@@ -342,9 +332,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <img src="../../assets/images/screenshots/751FlpD.png" alt="" width="100%">
-          <!-- todo -->
-          <!-- https://codepen.io/peanav/pen/DmZEEp -->
+          <div id="calendar"></div>
         </div>
         <!-- <div class="row">
                 <div class="col-lg-6 grid-margin stretch-card">
@@ -395,6 +383,8 @@
   <!-- endinject -->
   <!-- Custom js for this page -->
   <script src="../../assets/js/chart.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script src="./calendar.js"></script>
   <!-- End custom js for this page -->
 </body>
 
