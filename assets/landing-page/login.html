@@ -37,23 +37,54 @@
     </div>
   </div>
   <main class="login-body">
-    <form class="form-default" action="../dashboard/index.html">
+    <form id="loginForm" class="form-default">
       <div class="login-form">
         <h2>Login</h2>
         <div class="form-input">
-          <input type="email" name="email" placeholder="Email">
+          <input id="email" type="email" name="email" placeholder="Email">
         </div>
         <div class="form-input">
-          <input type="password" name="password" placeholder="Senha">
+          <input id="password" type="password" name="password" placeholder="Senha">
         </div>
         <div class="form-input pt-30">
-          <input type="submit" name="submit" value="Entrar">
+          <input id="sendButton" type="submit" name="submit" value="Entrar">
         </div>
-        <a href="#" class="forget">Esqueci a senha</a>
         <a href="register.html" class="registration">Cadastre-se</a>
       </div>
     </form>
   </main>
+
+  <script>
+    const form = document.getElementById("loginForm")
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+    })
+
+    const email = document.getElementById("email")
+    const password = document.getElementById("password")
+
+    const sendButton = document.getElementById("sendButton")
+    sendButton.addEventListener("click", () => {
+      fetch('http://localhost:3000/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user: {
+            email: email.value,
+            password: password.value
+          }
+        }),
+      }).then((response) => response.json())
+        .then((data) => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    })
+  </script>
 
   <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>

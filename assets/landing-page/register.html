@@ -37,28 +37,62 @@
     </div>
   </div>
   <main class="register-body">
-    <form class="form-default" action="./login.html">
+    <form id="registerForm" class="form-default">
       <div class="login-form">
         <h2>Registro</h2>
         <div class="form-input">
-          <input type="text" name="name" placeholder="Nome Completo">
+          <input id="username" type="text" name="name" placeholder="Nome Completo">
         </div>
         <div class="form-input">
-          <input type="email" name="email" placeholder="Email">
+          <input id="email" type="email" name="email" placeholder="Email">
         </div>
         <div class="form-input">
-          <input type="password" name="password" placeholder="Senha">
+          <input id="password" type="password" name="password" placeholder="Senha">
         </div>
         <div class="form-input">
           <input type="password" name="password" placeholder="Confirme a Senha">
         </div>
         <div class="form-input pt-30">
-          <input type="submit" name="submit" value="Enviar">
+          <input id="sendButton" type="submit" name="submit" value="Enviar">
         </div>
         <a href="login.html" class="registration">Já é cadastrado? Faça login</a>
       </div>
     </form>
   </main>
+
+  <script>
+    const form = document.getElementById("registerForm")
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+    })
+
+    const email = document.getElementById("email")
+    const username = document.getElementById("username")
+    const password = document.getElementById("password")
+
+    const sendButton = document.getElementById("sendButton")
+    sendButton.addEventListener("click", () => {
+      fetch('http://localhost:3000/v1/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user: {
+            email: email.value,
+            username: username.value,
+            password: password.value
+          }
+        }),
+      }).then((response) => response.json())
+        .then((data) => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    })
+  </script>
 
   <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
