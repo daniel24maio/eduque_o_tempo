@@ -31308,3 +31308,7 @@ div.tagsinput span.tag a {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #151f31;
 }
+
+.form-check .form-check-label input {
+  opacity: 1;
+}

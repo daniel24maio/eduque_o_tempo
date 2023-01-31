@@ -54,37 +54,6 @@
     </form>
   </main>
 
-  <script>
-    const form = document.getElementById("loginForm")
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-    })
-
-    const email = document.getElementById("email")
-    const password = document.getElementById("password")
-
-    const sendButton = document.getElementById("sendButton")
-    sendButton.addEventListener("click", () => {
-      fetch('http://localhost:3000/auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          user: {
-            email: email.value,
-            password: password.value
-          }
-        }),
-      }).then((response) => response.json())
-        .then((data) => {
-          console.log('Success:', data);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-    })
-  </script>
 
   <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -113,6 +82,48 @@
   <script src="./assets/js/plugins.js"></script>
   <script src="./assets/js/main.js"></script>
 
+  <script>
+    const form = document.getElementById("loginForm")
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+    })
+
+    const email = document.getElementById("email")
+    const password = document.getElementById("password")
+
+    const sendButton = document.getElementById("sendButton")
+    sendButton.addEventListener("click", () => {
+      fetch('http://localhost:3000/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user: {
+            email: email.value,
+            password: password.value
+          }
+        }),
+      }).then((response) => response.json())
+        .then((data) => {
+          console.log('Success:', data);
+          if (data.error) {
+            alert('Login Inválido')
+          } else {
+            document.cookie = data['access_token']
+            window.localStorage.setItem('token', data['access_token'])
+            alert('Login realizado com sucesso! Redirecionando...')
+            setInterval(() => {
+              window.location.href = 'http://127.0.0.1:5500/assets/dashboard/index.html'
+            }, 1000);
+          }
+
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    })
+  </script>
 </body>
 
 </html>

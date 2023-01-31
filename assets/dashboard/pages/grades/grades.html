@@ -24,7 +24,7 @@
                 <span class="count bg-success"></span>
               </div>
               <div class="profile-name">
-                <h5 class="mb-0 font-weight-normal">Fizika Frederitch</h5>
+                <h5 id="username" class="mb-0 font-weight-normal"></h5>
                 <span></span>
               </div>
             </div>
@@ -175,6 +175,25 @@
   <script src="../../assets/js/settings.js"></script>
   <script src="../../assets/js/todolist.js"></script>
   <script src="../../assets/js/chart.js"></script>
+  <script>
+    const token = window.localStorage.getItem('token')
+    const username = document.getElementById('username')
+
+    fetch('http://localhost:3000/auth/me', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `Bearer ${token}`
+      },
+    }).then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+        username.innerText = data.user.username
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  </script>
 </body>
 
 </html>
