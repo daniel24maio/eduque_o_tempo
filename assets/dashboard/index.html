@@ -281,6 +281,7 @@
       }).then((response) => response.json())
         .then((data) => {
           console.log('Success:', data);
+          // esse troço aqui é pra gerar os toDos lá na lista
           data.todos.forEach(todo => {
             const ul = document.getElementById('toDoList')
             let toDoId = document.createElement('input')
@@ -305,6 +306,7 @@
             li.appendChild(toDoId)
             ul.appendChild(li)
           });
+          // daqui até o catch é gambiarra pra deletar os toDos
           removeToDo = document.querySelectorAll('#removeToDo')
           removeToDo.forEach((todo) => {
             todo.addEventListener("click", (e) => {
