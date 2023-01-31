@@ -1,1 +1,10 @@
+# intellij
 .idea
+
+# backend
+backend/node_modules
+backend/dist
+backend/.env
+
+backend/certs/*.key
+backend/certs/*.pem

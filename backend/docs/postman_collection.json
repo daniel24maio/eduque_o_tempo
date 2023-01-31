@@ -1,0 +1,1399 @@
+{
+	"info": {
+		"_postman_id": "f4b8f893-5a00-48bc-a7aa-c35347982001",
+		"name": "Anime List",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Common",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{anime-list-url}}/",
+							"host": [
+								"{{anime-list-url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "v1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{anime-list-url}}/v1",
+							"host": [
+								"{{anime-list-url}}"
+							],
+							"path": [
+								"v1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code == 200) {\r",
+									"    const access_token = pm.response.json().access_token\r",
+									"\r",
+									"    pm.collectionVariables.set('bearer-token', access_token)\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"email\": \"{{email}}\",\r\n        \"password\": \"{{password}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{anime-list-url}}/auth",
+							"host": [
+								"{{anime-list-url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.code == 200) {\r",
+									"    const id = pm.response.json().user.id\r",
+									"    const email = pm.response.json().user.email\r",
+									"    const username = pm.response.json().user.username\r",
+									"\r",
+									"    pm.collectionVariables.set('id', id)\r",
+									"    pm.collectionVariables.set('email', email)\r",
+									"    pm.collectionVariables.set('username', username)\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{anime-list-url}}/auth/me",
+							"host": [
+								"{{anime-list-url}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "Index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users?page=1&size=1",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "1"
+										},
+										{
+											"key": "email",
+											"value": "horus",
+											"disabled": true
+										},
+										{
+											"key": "username",
+											"value": "he4rt",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "username",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users/:username",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "thiago-rezende"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addAssignment",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.response.code == 201) {",
+											"    const id = pm.response.json().assignment.id",
+											"",
+											"    pm.collectionVariables.set('assignment-id', id)",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"assignment\": {\r\n        \"name\": \"Ultra Fucking Science\",\r\n        \"grade\": 0.4\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users/:username/disciplines/:id/assignments",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":username",
+										"disciplines",
+										":id",
+										"assignments"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "thiago-rezende"
+										},
+										{
+											"key": "id",
+											"value": "{{discipline-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addTodo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.response.code == 201) {",
+											"    const id = pm.response.json().todo.id",
+											"",
+											"    pm.collectionVariables.set('todo-id', id)",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"todo\": {\r\n        \"done\": true,\r\n        \"message\": \"do so mutch other things\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users/:username/todos",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":username",
+										"todos"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "thiago-rezende"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "removeTodo",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users/:username/todos/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":username",
+										"todos",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "thiago-rezende"
+										},
+										{
+											"key": "id",
+											"value": "{{todo-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "todos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users/:username/todos?page=1&size=1",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":username",
+										"todos"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "slug",
+											"value": "full",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Neon",
+											"disabled": true
+										},
+										{
+											"key": "native",
+											"value": "鋼",
+											"disabled": true
+										},
+										{
+											"key": "romaji",
+											"value": "Vaioretto Evāgāden",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1"
+										}
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "{{username}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "disciplines",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users/:username/disciplines?page=1&size=1",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":username",
+										"disciplines"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "slug",
+											"value": "full",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Neon",
+											"disabled": true
+										},
+										{
+											"key": "native",
+											"value": "鋼",
+											"disabled": true
+										},
+										{
+											"key": "romaji",
+											"value": "Vaioretto Evāgāden",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1"
+										}
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "{{username}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "assignments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users/:username/disciplines/:id/assignments?page=1&size=1",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":username",
+										"disciplines",
+										":id",
+										"assignments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "slug",
+											"value": "full",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Neon",
+											"disabled": true
+										},
+										{
+											"key": "native",
+											"value": "鋼",
+											"disabled": true
+										},
+										{
+											"key": "romaji",
+											"value": "Vaioretto Evāgāden",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1"
+										}
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "{{username}}"
+										},
+										{
+											"key": "id",
+											"value": "{{discipline-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.response.code == 201) {\r",
+											"    const id = pm.response.json().user.id\r",
+											"    const email = pm.response.json().user.email\r",
+											"    const username = pm.response.json().user.username\r",
+											"    const password = JSON.parse(pm.request.body.raw).user.password\r",
+											"\r",
+											"    pm.collectionVariables.set('id', id)\r",
+											"    pm.collectionVariables.set('email', email)\r",
+											"    pm.collectionVariables.set('username', username)\r",
+											"    pm.collectionVariables.set('password', password)\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": {\r\n        \"email\": \"tihago.rezende@hotmail.com.br\",\r\n        \"username\": \"thiago.rezende\",\r\n        \"password\": \"secret\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.response.code == 200) {\r",
+											"    const id = pm.response.json().user.id\r",
+											"    const email = pm.response.json().user.email\r",
+											"    const username = pm.response.json().user.username\r",
+											"    const password = JSON.parse(pm.request.body.raw).user.password\r",
+											"\r",
+											"    pm.collectionVariables.set('id', id)\r",
+											"    pm.collectionVariables.set('email', email)\r",
+											"    pm.collectionVariables.set('username', username)\r",
+											"    pm.collectionVariables.set('password', password)\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": {\r\n        \"email\": \"tihago.rezende@outlook.com.br\",\r\n        \"username\": \"thiago.rezende\",\r\n        \"password\": \"secret\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/users/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Todos",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "Index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/todos?page=1&size=1",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"todos"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "1"
+										},
+										{
+											"key": "slug",
+											"value": "full",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Neon",
+											"disabled": true
+										},
+										{
+											"key": "native",
+											"value": "鋼",
+											"disabled": true
+										},
+										{
+											"key": "romaji",
+											"value": "Vaioretto Evāgāden",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/todos/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"todos",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{todo-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.response.code == 201) {\r",
+											"    const id = pm.response.json().todo.id\r",
+											"\r",
+											"    pm.collectionVariables.set('todo-id', id)\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"todo\": {\r\n        \"done\": true,\r\n        \"message\": \"do more things\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/todos",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"todos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.response.code == 200) {\r",
+											"    const id = pm.response.json().todo.id\r",
+											"\r",
+											"    pm.collectionVariables.set('todo-id', id)\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"todo\": {\r\n        \"done\": true,\r\n        \"message\": \"do more other things\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/todos/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"todos",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{todo-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/todos/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"todos",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{todo-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Disciplines",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "Index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/disciplines?page=1&size=1",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"disciplines"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "1"
+										},
+										{
+											"key": "slug",
+											"value": "full",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Neon",
+											"disabled": true
+										},
+										{
+											"key": "native",
+											"value": "鋼",
+											"disabled": true
+										},
+										{
+											"key": "romaji",
+											"value": "Vaioretto Evāgāden",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/disciplines/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"disciplines",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{discipline-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.response.code == 201) {\r",
+											"    const id = pm.response.json().discipline.id\r",
+											"\r",
+											"    pm.collectionVariables.set('discipline-id', id)\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"discipline\": {\r\n        \"name\": \"compilers\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/disciplines",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"disciplines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.response.code == 200) {\r",
+											"    const id = pm.response.json().discipline.id\r",
+											"\r",
+											"    pm.collectionVariables.set('discipline-id', id)\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"discipline\": {\r\n        \"name\": \"Ultra Compilers\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/disciplines/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"disciplines",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{discipline-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/disciplines/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"disciplines",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{discipline-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Assignments",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "Index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/assignments?page=1&size=1",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"assignments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "1"
+										},
+										{
+											"key": "slug",
+											"value": "full",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Neon",
+											"disabled": true
+										},
+										{
+											"key": "native",
+											"value": "鋼",
+											"disabled": true
+										},
+										{
+											"key": "romaji",
+											"value": "Vaioretto Evāgāden",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{anime-list-url}}/v1/assignments/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"assignments",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{assignment-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.response.code == 201) {\r",
+											"    const id = pm.response.json().assignment.id\r",
+											"\r",
+											"    pm.collectionVariables.set('assignment-id', id)\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"assignment\": {\r\n        \"name\": \"compilers\",\r\n        \"grade\": 5.2,\r\n        \"disciplineId\": \"{{discipline-id}}\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/assignments",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"assignments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if(pm.response.code == 200) {\r",
+											"    const id = pm.response.json().assignment.id\r",
+											"\r",
+											"    pm.collectionVariables.set('assignment-id', id)\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"assignment\": {\r\n        \"name\": \"Ultra Compilers\",\r\n        \"grade\": 100\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/assignments/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"assignments",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{assignment-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{anime-list-url}}/v1/assignments/:id",
+									"host": [
+										"{{anime-list-url}}"
+									],
+									"path": [
+										"v1",
+										"assignments",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{assignment-id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearer-token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "anime-list-url",
+			"value": "localhost:3000"
+		},
+		{
+			"key": "id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "thiago-rezende",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": "thiago.manoel.rezende@gmail.com",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "secret",
+			"type": "string"
+		},
+		{
+			"key": "todo-id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "bearer-token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "discipline-id",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "assignment-id",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
