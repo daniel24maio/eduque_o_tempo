@@ -6,7 +6,7 @@ let todos: Array<Todo> = [];
 
 async function seed() {
   todos = [];
-
+  /*
   todos.push(
     Todo.build({
       done: false,
@@ -25,6 +25,7 @@ async function seed() {
 
   await todos[0].save();
   await todos[1].save();
+  */
 }
 
 export { seed, todos };

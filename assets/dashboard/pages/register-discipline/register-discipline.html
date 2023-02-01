@@ -173,11 +173,10 @@
                   <h4 class="card-title">Cadastre suas disciplinas</h4>
                   <form class="forms-sample">
                     <div class="form-group">
-                      <label for="exampleInputUsername1">Disciplina</label>
-                      <input type="text" class="form-control" id="exampleInputUsername1"
-                        placeholder="Nome da disciplina">
+                      <label for="discipline">Disciplina</label>
+                      <input type="text" class="form-control" id="discipline" placeholder="Nome da disciplina">
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2">Cadastrar</button>
+                    <button id="sendDiscipline" type="submit" class="btn btn-primary mr-2">Cadastrar</button>
                     <a href="../../index.html" class="btn btn-dark">Voltar</a>
                   </form>
                 </div>
@@ -201,6 +200,29 @@
       <script>
         const token = window.localStorage.getItem('token')
         const username = document.getElementById('username')
+        const sendDiscipline = document.getElementById('sendDiscipline')
+        const discipline = document.getElementById('discipline')
+
+        sendDiscipline.addEventListener('click', (e) => {
+          e.preventDefault()
+          fetch('http://localhost:3000/v1/disciplines', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              "Authorization": `Bearer ${token}`
+            }, body: JSON.stringify({
+              discipline: {
+                name: discipline.value
+              }
+            })
+          }).then((response) => response.json())
+            .then((data) => {
+              console.log('Success:', data);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+        })
 
         fetch('http://localhost:3000/auth/me', {
           method: 'GET',

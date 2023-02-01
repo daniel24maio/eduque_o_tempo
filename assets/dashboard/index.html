@@ -335,7 +335,13 @@
         'Content-Type': 'application/json',
         "Authorization": `Bearer ${token}`
       },
-    }).then((response) => response.json())
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error("failed to fetch user info")
+      }
+
+      return response.json()
+    })
       .then((data) => {
         console.log('Success:', data);
         username.innerText = data.user.username;
@@ -360,7 +366,11 @@
             message: toDoTask.value,
           }
         }),
-      }).then((response) => response.json())
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error("failed to fetch user info")
+        }
+      })
         .then((data) => {
           console.log('Success:', data);
         })

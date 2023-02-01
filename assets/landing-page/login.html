@@ -104,7 +104,13 @@
             password: password.value
           }
         }),
-      }).then((response) => response.json())
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error('login failed')
+        }
+
+        return response.json()
+      })
         .then((data) => {
           console.log('Success:', data);
           if (data.error) {
