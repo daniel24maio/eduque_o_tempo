@@ -161,7 +161,7 @@
         </div>
       </nav>
       <div class="main-panel">
-        <div class="content-wrapper">
+        <div id="section"class="content-wrapper">
         </div>
       </div>
     </div>
@@ -191,6 +191,8 @@
           console.log('Success:', data);
           data.disciplines.forEach( (e) => {
             console.log(e.name);
+            let section = document.getElementById('section')
+            section.innerText += `${e.name}\n`
           });
         })
         .catch((error) => {

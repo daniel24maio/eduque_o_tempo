@@ -10,5 +10,5 @@ import database from '~/database';
 const server = createServer();
 
 server.listen(config.env.port, () =>
-  console.log(`[anime-list]: listening on port ${config.env.port}`)
+  console.log(`[eduque-o-tempo]: listening on port ${config.env.port}`)
 );
