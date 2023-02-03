@@ -5,9 +5,9 @@ Projeto para disciplina de Programação Web.
 
 2 - Para execução do backend é necessário acessar o diretório backend e executar:
 
-yarn keys:generate
-yarn db:setup
-yarn watch
+yarn keys:generate <br>
+yarn db:setup <br>
+yarn watch <br>
 
 3 - Ao executar o "yarn watch" o servidor abrirá.
 
